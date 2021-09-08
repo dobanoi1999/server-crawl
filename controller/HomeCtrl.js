@@ -1,7 +1,10 @@
 const puppeteer = require("puppeteer");
 const homeCtrl = {
   getHome: async (req, res) => {
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+      headless: true,
+      args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    });
     const page = await browser.newPage();
     await page.goto(process.env.URL_CRAWL);
 
