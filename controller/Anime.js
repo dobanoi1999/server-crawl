@@ -1,7 +1,10 @@
 const puppeteer = require("puppeteer");
 const animeCtrl = {
   getAllAnime: async (req, res) => {
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+      headless: true,
+      args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    });
     const page = await browser.newPage();
 
     const p = req.query?.page || "";
@@ -51,7 +54,10 @@ const animeCtrl = {
     res.json(data);
   },
   getInfoAnime: async (req, res) => {
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+      headless: true,
+      args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    });
     const page = await browser.newPage();
 
     const { name, ep } = req.params || "";
