@@ -6,6 +6,8 @@ const homeCtrl = {
       args: ["--no-sandbox", "--disable-setuid-sandbox"],
     });
     const page = await browser.newPage();
+    await page.setDefaultNavigationTimeout(0);
+
     await page.goto(process.env.URL_CRAWL);
 
     const data = await page.evaluate(() => {

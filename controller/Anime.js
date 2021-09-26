@@ -6,6 +6,7 @@ const animeCtrl = {
       args: ["--no-sandbox", "--disable-setuid-sandbox"],
     });
     const page = await browser.newPage();
+    await page.setDefaultNavigationTimeout(0);
 
     const p = req.query?.page || "";
 
@@ -59,6 +60,7 @@ const animeCtrl = {
       args: ["--no-sandbox", "--disable-setuid-sandbox"],
     });
     const page = await browser.newPage();
+    await page.setDefaultNavigationTimeout(0);
 
     const { name, ep } = req.params || "";
     await page.goto(`${process.env.URL_CRAWL}/${name}/${ep}`);
